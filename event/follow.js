@@ -1,3 +1,7 @@
-exports.index = async (event) => {
-
+exports.index = async () => {
+  const message = {
+    type: 'text',
+    text: '友達追加ありがとうございます！',
+  };
+  return message;
 };
