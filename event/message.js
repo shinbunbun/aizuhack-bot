@@ -70,6 +70,16 @@ const textEvent = (event) => {
       };
       break;
     }
+    // todo
+    /* case '音声メッセージ': {
+      message = {
+        type: 'audio',
+        originalContentUrl: 'https://example.com/original.m4a',
+        duration: 60000,
+      };
+      break;
+    } */
+    // todo
     /* case '動画メッセージ': {
       message = {
         type: 'video',
@@ -78,6 +88,21 @@ const textEvent = (event) => {
       };
       break;
     } */
+    case '位置情報メッセージ': {
+      message = {
+        type: 'location',
+        title: 'my location',
+        address: '〒160-0004 東京都新宿区四谷一丁目6番1号',
+        latitude: 35.687574,
+        longitude: 139.72922,
+      };
+      break;
+    }
+    case 'イメージマップメッセージ': {
+      // todo
+      break;
+    }
+
     case 'ここはどこ': {
       if (event.source.type === 'user') {
         message = {
