@@ -54,6 +54,14 @@ const textEvent = (event) => {
       };
       break;
     }
+    case 'スタンプメッセージ': {
+      message = {
+        type: 'sticker',
+        packageId: '446',
+        stickerId: '1988',
+      };
+      break;
+    }
     case 'ここはどこ': {
       if (event.source.type === 'user') {
         message = {
