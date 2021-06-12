@@ -102,7 +102,70 @@ const textEvent = (event) => {
       // todo
       break;
     }
-
+    case 'ボタンテンプレート': {
+      message = {
+        type: 'template',
+        altText: 'ボタンテンプレート',
+        template: {
+          type: 'buttons',
+          thumbnailImageUrl: 'https://shinbunbun.info/images/photos/7.jpeg',
+          imageAspectRatio: 'rectangle',
+          imageSize: 'cover',
+          imageBackgroundColor: '#FFFFFF',
+          title: 'ボタンテンプレート',
+          text: 'ボタンだお',
+          defaultAction: {
+            type: 'uri',
+            label: 'View detail',
+            uri: 'https://shinbunbun.info/images/photos/',
+          },
+          actions: [
+            {
+              type: 'postback',
+              label: 'ポストバックアクション',
+              data: 'button-postback',
+            },
+            {
+              type: 'message',
+              label: 'メッセージアクション',
+              data: 'button-message',
+            },
+            {
+              type: 'uri',
+              label: 'URIアクション',
+              uri: 'https://shinbunbun.info/',
+            },
+            {
+              type: 'datetimepicker',
+              label: '日時選択アクション',
+              data: 'button-date',
+              mode: 'datetime',
+              initial: '2021-06-01t00:00',
+              max: '2022-12-31t23:59',
+              min: '2020-01-01t00:00',
+            },
+            {
+              type: 'datetimepicker',
+              label: 'カメラアクション',
+              data: 'button-date',
+              mode: 'datetime',
+              initial: '2021-06-01t00:00',
+              max: '2022-12-31t23:59',
+              min: '2020-01-01t00:00',
+            },
+            {
+              type: 'cameraRoll',
+              label: 'カメラロールアクション',
+            },
+            {
+              type: 'location',
+              label: '位置情報アクション',
+            },
+          ],
+        },
+      };
+      break;
+    }
     case 'ここはどこ': {
       if (event.source.type === 'user') {
         message = {
