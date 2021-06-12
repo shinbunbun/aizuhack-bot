@@ -62,6 +62,22 @@ const textEvent = (event) => {
       };
       break;
     }
+    case '画像メッセージ': {
+      message = {
+        type: 'image',
+        originalContentUrl: 'https://shinbunbun.info/images/photos/7.jpeg',
+        previewImageUrl: 'https://shinbunbun.info/images/photos/7.jpeg',
+      };
+      break;
+    }
+    /* case '動画メッセージ': {
+      message = {
+        type: 'video',
+        originalContentUrl: '',
+        previewImageUrl: '',
+      };
+      break;
+    } */
     case 'ここはどこ': {
       if (event.source.type === 'user') {
         message = {
