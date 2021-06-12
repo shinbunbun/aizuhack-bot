@@ -9,6 +9,7 @@ const leaveFunc = require('./event/leave');
 const followFunc = require('./event/follow');
 const unfollowFunc = require('./event/unfollow');
 const memberJoinedFunc = require('./event/memberJoined');
+const memberLeftFunc = require('./event/memberLeft');
 
 const client = new line.Client(config);
 
@@ -54,6 +55,10 @@ exports.index = (req, res) => {
         }
         case 'memberJoined': {
           memberJoinedFunc.index(event);
+          break;
+        }
+        case 'memberLeft': {
+          memberLeftFunc.index(event);
           break;
         }
         default:
