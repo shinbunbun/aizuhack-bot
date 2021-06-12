@@ -7,6 +7,7 @@ const postbackFunc = require('./event/postback');
 const joinFunc = require('./event/join');
 const leaveFunc = require('./event/leave');
 const followFunc = require('./event/follow');
+const unfollowFunc = require('./event/unfollow');
 
 const client = new line.Client(config);
 
@@ -31,19 +32,23 @@ exports.index = (req, res) => {
           break;
         }
         case 'postback': {
-          message = await postbackFunc.postback(event);
+          message = await postbackFunc.index(event);
           break;
         }
         case 'join': {
-          message = joinFunc.join(event);
+          message = joinFunc.index(event);
           break;
         }
         case 'leave': {
-          leaveFunc.leave(event);
+          leaveFunc.index(event);
           break;
         }
         case 'follow': {
-          followFunc.follow(event, client);
+          followFunc.index(event);
+          break;
+        }
+        case 'unfollow': {
+          unfollowFunc.index(event);
           break;
         }
         default:
