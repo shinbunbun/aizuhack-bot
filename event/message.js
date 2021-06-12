@@ -9,6 +9,51 @@ const textEvent = (event) => {
       };
       break;
     }
+    case '複数メッセージ': {
+      message = [
+        {
+          type: 'text',
+          text: 'Hello, user',
+        },
+        {
+          type: 'text',
+          text: 'May I help you?',
+        },
+      ];
+      break;
+    }
+    case 'クイックリプライ': {
+      message = {
+        type: 'text',
+        text: 'クイックリプライ（以下のアクションはクイックリプライ専用で、他のメッセージタイプでは使用できません）',
+        quickReply: {
+          items: [
+            {
+              type: 'action',
+              action: {
+                type: 'camera',
+                label: 'カメラを開く',
+              },
+            },
+            {
+              type: 'action',
+              action: {
+                type: 'cameraRoll',
+                label: 'カメラロールを開く',
+              },
+            },
+            {
+              type: 'action',
+              action: {
+                type: 'location',
+                label: '位置情報画面を開く',
+              },
+            },
+          ],
+        },
+      };
+      break;
+    }
     case 'ここはどこ': {
       if (event.source.type === 'user') {
         message = {
