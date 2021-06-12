@@ -1,3 +1,3 @@
-exports.index = async (event) => {
-
+exports.index = async () => {
+  console.log('botがグループから退出しました');
 };
