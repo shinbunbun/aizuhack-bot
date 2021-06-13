@@ -144,23 +144,6 @@ const textEvent = (event) => {
               max: '2022-12-31t23:59',
               min: '2020-01-01t00:00',
             },
-            {
-              type: 'datetimepicker',
-              label: 'カメラアクション',
-              data: 'button-date',
-              mode: 'datetime',
-              initial: '2021-06-01t00:00',
-              max: '2022-12-31t23:59',
-              min: '2020-01-01t00:00',
-            },
-            {
-              type: 'cameraRoll',
-              label: 'カメラロールアクション',
-            },
-            {
-              type: 'location',
-              label: '位置情報アクション',
-            },
           ],
         },
       };
@@ -281,6 +264,30 @@ const textEvent = (event) => {
               },
             },
           ],
+        },
+      };
+      break;
+    }
+    case 'Flex Message': {
+      message = {
+        type: 'flex',
+        altText: 'Flex Message',
+        contents: {
+          type: 'bubble',
+          body: {
+            type: 'box',
+            layout: 'vertical',
+            contents: [
+              {
+                type: 'text',
+                text: 'hello',
+              },
+              {
+                type: 'text',
+                text: 'world',
+              },
+            ],
+          },
         },
       };
       break;

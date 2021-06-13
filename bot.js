@@ -15,11 +15,9 @@ const client = new line.Client(config);
 
 exports.index = (req, res) => {
   console.log(req.body.events);
-
   // 署名検証
-  const signature = crypto.createHmac('sha256', process.env.CHANNELSECRET).update(req.body).digest('base64');
-  const checkHeader = (req.headers || {})['X-Line-Signature'];
-
+  const signature = crypto.createHmac('sha256', process.env.channelSecret).update(JSON.stringify(req.body)).digest('base64');
+  const checkHeader = req.header('X-Line-Signature');
   const { events } = req.body;
   let message;
   if (signature === checkHeader) {
