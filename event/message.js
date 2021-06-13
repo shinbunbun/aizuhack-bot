@@ -166,6 +166,30 @@ const textEvent = (event) => {
       };
       break;
     }
+    case '確認テンプレート': {
+      message = {
+        type: 'template',
+        altText: '確認テンプレート',
+        template: {
+          type: 'confirm',
+          text: '確認テンプレート',
+          actions: [
+            {
+              type: 'message',
+              label: 'はい',
+              text: 'yes',
+            },
+            {
+              type: 'message',
+              label: 'いいえ',
+              text: 'no',
+            },
+          ],
+        },
+      };
+      break;
+    }
+
     case 'ここはどこ': {
       if (event.source.type === 'user') {
         message = {
