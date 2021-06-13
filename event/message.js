@@ -128,7 +128,7 @@ const textEvent = (event) => {
             {
               type: 'message',
               label: 'メッセージアクション',
-              data: 'button-message',
+              text: 'button-message',
             },
             {
               type: 'uri',
@@ -142,7 +142,7 @@ const textEvent = (event) => {
               mode: 'datetime',
               initial: '2021-06-01t00:00',
               max: '2022-12-31t23:59',
-              min: '2020-01-01t00:00',
+              min: '2021-06-01t00:00',
             },
           ],
         },
