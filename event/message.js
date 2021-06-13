@@ -189,7 +189,102 @@ const textEvent = (event) => {
       };
       break;
     }
-
+    case 'カルーセルテンプレート': {
+      message = {
+        type: 'template',
+        altText: 'カルーセルテンプレート',
+        template: {
+          type: 'carousel',
+          columns: [
+            {
+              thumbnailImageUrl: 'https://shinbunbun.info/images/photos/7.jpeg',
+              imageBackgroundColor: '#FFFFFF',
+              title: 'タイトル1',
+              text: '説明1',
+              defaultAction: {
+                type: 'uri',
+                label: 'View detail',
+                uri: 'https://shinbunbun.info/',
+              },
+              actions: [
+                {
+                  type: 'postback',
+                  label: 'ポストバック',
+                  data: 'postback-carousel-1',
+                },
+                {
+                  type: 'uri',
+                  label: 'URIアクション',
+                  uri: 'https://shinbunbun.info/',
+                },
+              ],
+            },
+            {
+              thumbnailImageUrl: 'https://shinbunbun.info/images/photos/10.jpeg',
+              imageBackgroundColor: '#FFFFFF',
+              title: 'タイトル2',
+              text: '説明2',
+              defaultAction: {
+                type: 'uri',
+                label: 'View detail',
+                uri: 'https://shinbunbun.info/',
+              },
+              actions: [
+                {
+                  type: 'postback',
+                  label: 'ポストバック',
+                  data: 'postback-carousel-2',
+                },
+                {
+                  type: 'uri',
+                  label: 'URIアクション',
+                  uri: 'https://shinbunbun.info/',
+                },
+              ],
+            },
+          ],
+          imageAspectRatio: 'rectangle',
+          imageSize: 'cover',
+        },
+      };
+      break;
+    }
+    case '画像カルーセルテンプレート': {
+      message = {
+        type: 'template',
+        altText: '画像カルーセルテンプレート',
+        template: {
+          type: 'image_carousel',
+          columns: [
+            {
+              imageUrl: 'https://shinbunbun.info/images/photos/4.jpeg',
+              action: {
+                type: 'postback',
+                label: 'ポストバック',
+                data: 'image-carousel-1',
+              },
+            },
+            {
+              imageUrl: 'https://shinbunbun.info/images/photos/5.jpeg',
+              action: {
+                type: 'message',
+                label: 'メッセージ',
+                text: 'いえい',
+              },
+            },
+            {
+              imageUrl: 'https://shinbunbun.info/images/photos/7.jpeg',
+              action: {
+                type: 'uri',
+                label: 'URIアクション',
+                uri: 'https://shinbunbun.info/',
+              },
+            },
+          ],
+        },
+      };
+      break;
+    }
     case 'ここはどこ': {
       if (event.source.type === 'user') {
         message = {
