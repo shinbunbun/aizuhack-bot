@@ -1,7 +1,3 @@
-exports.index = async () => {
-  const message = {
-    type: 'text',
-    text: '友達追加ありがとうございます！',
-  };
-  return message;
+exports.index = async (event) => {
+  console.log(`unfollowされました...\nuserId: ${event.sorce.userId}`);
 };
