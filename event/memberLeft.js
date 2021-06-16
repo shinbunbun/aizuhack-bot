@@ -1,4 +1,4 @@
-exports.index = async (event) => {
+exports.index = (event) => {
   const message = {
     type: 'text',
     text: `ユーザーが退出しました...\n退出したユーザー: ${event.left.members[0].userId}`,

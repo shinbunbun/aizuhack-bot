@@ -44,7 +44,8 @@ exports.index = (req, res) => {
           break;
         }
         case 'follow': {
-          message = followFunc.index(event);
+          message = followFunc.index();
+          console.log(message);
           break;
         }
         case 'unfollow': {
@@ -65,7 +66,7 @@ exports.index = (req, res) => {
       if (message === undefined) {
         res.json('done');
       } else {
-        console.log(`message: ${JSON.stringify(message)}`);
+        console.log(`返信メッセージ: ${JSON.stringify(message)}`);
         client.replyMessage(event.replyToken, message)
           .then((response) => {
             res.json(response);
