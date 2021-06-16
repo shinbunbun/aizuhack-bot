@@ -44,7 +44,7 @@ exports.index = (req, res) => {
           break;
         }
         case 'follow': {
-          followFunc.index(event);
+          message = followFunc.index(event);
           break;
         }
         case 'unfollow': {
@@ -52,17 +52,19 @@ exports.index = (req, res) => {
           break;
         }
         case 'memberJoined': {
-          memberJoinedFunc.index(event);
+          message = memberJoinedFunc.index(event);
           break;
         }
         case 'memberLeft': {
-          memberLeftFunc.index(event);
+          message = memberLeftFunc.index(event);
           break;
         }
         default:
           break;
       }
-      if (message !== undefined) {
+      if (message === undefined) {
+        res.json('done');
+      } else {
         console.log(`message: ${JSON.stringify(message)}`);
         client.replyMessage(event.replyToken, message)
           .then((response) => {
