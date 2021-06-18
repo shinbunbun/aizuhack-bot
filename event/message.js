@@ -82,14 +82,14 @@ const textEvent = (event) => {
       break;
     }
     // todo
-    /* case '音声メッセージ': {
+    case '音声メッセージ': {
       message = {
         type: 'audio',
         originalContentUrl: 'https://example.com/original.m4a',
         duration: 60000,
       };
       break;
-    } */
+    }
     // todo
     /* case '動画メッセージ': {
       message = {
