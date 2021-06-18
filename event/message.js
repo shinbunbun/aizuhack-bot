@@ -81,7 +81,9 @@ const textEvent = (event) => {
       };
       break;
     }
+    // '音声メッセージ'というメッセージが送られてきた時
     case '音声メッセージ': {
+      // 返信するメッセージを作成
       message = {
         type: 'audio',
         originalContentUrl: 'https://github.com/shinbunbun/aizuhack-bot/blob/master/media/demo.m4a?raw=true',
@@ -89,7 +91,9 @@ const textEvent = (event) => {
       };
       break;
     }
+    // '動画メッセージ'というメッセージが送られてきた時
     case '動画メッセージ': {
+      // 返信するメッセージを作成
       message = {
         type: 'video',
         originalContentUrl: 'https://github.com/shinbunbun/aizuhack-bot/blob/master/media/demo.mp4?raw=true',
