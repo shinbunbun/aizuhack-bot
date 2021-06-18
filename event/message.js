@@ -89,12 +89,11 @@ const textEvent = (event) => {
       };
       break;
     }
-    // todo
     case '動画メッセージ': {
       message = {
         type: 'video',
-        originalContentUrl: '',
-        previewImageUrl: '',
+        originalContentUrl: 'https://github.com/shinbunbun/aizuhack-bot/blob/master/media/demo.mp4?raw=true',
+        previewImageUrl: 'https://raw.githubusercontent.com/shinbunbun/aizuhack-bot/master/media/thumbnail.jpg?raw=true',
       };
       break;
     }
