@@ -90,14 +90,14 @@ const textEvent = (event) => {
       break;
     }
     // todo
-    /* case '動画メッセージ': {
+    case '動画メッセージ': {
       message = {
         type: 'video',
         originalContentUrl: '',
         previewImageUrl: '',
       };
       break;
-    } */
+    }
     // '位置情報メッセージ'というメッセージが送られてきた時
     case '位置情報メッセージ': {
       // 返信するメッセージを作成
