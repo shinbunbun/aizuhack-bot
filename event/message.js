@@ -81,12 +81,11 @@ const textEvent = (event) => {
       };
       break;
     }
-    // todo
     case '音声メッセージ': {
       message = {
         type: 'audio',
-        originalContentUrl: 'https://example.com/original.m4a',
-        duration: 60000,
+        originalContentUrl: 'https://github.com/shinbunbun/aizuhack-bot/blob/master/media/demo.m4a?raw=true',
+        duration: 6000,
       };
       break;
     }
