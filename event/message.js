@@ -116,7 +116,7 @@ const textEvent = (event) => {
     }
     // 'イメージマップメッセージ'というメッセージが送られてきた時
     case 'イメージマップメッセージ': {
-      //イメージマップの画像の作成方法には細かい指定があります。参考→https://developers.line.biz/ja/reference/messaging-api/#imagemap-message
+      // イメージマップの画像の作成方法には細かい指定があります。参考→https://developers.line.biz/ja/reference/messaging-api/#imagemap-message
       message = [
         {
           type: 'imagemap',
