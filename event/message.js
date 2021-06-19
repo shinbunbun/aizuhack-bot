@@ -350,19 +350,76 @@ const textEvent = (event) => {
         altText: 'Flex Message',
         contents: {
           type: 'bubble',
+          header: {
+            type: 'box',
+            layout: 'vertical',
+            contents: [
+              {
+                type: 'text',
+                text: 'Flex Message',
+                color: '#FFFFFF',
+                weight: 'bold',
+              },
+            ],
+          },
+          hero: {
+            type: 'image',
+            url: 'https://pbs.twimg.com/profile_images/1236928986212478976/wDa51i9T_400x400.jpg',
+            size: 'xl',
+          },
           body: {
             type: 'box',
             layout: 'vertical',
             contents: [
               {
                 type: 'text',
-                text: 'hello',
+                text: 'しんぶんぶん',
+                size: 'xl',
+                weight: 'bold',
+                align: 'center',
               },
               {
                 type: 'text',
-                text: 'world',
+                text: '会津大学学部一年',
+                align: 'center',
+              },
+              {
+                type: 'separator',
+                margin: 'md',
+              },
+              {
+                type: 'box',
+                layout: 'vertical',
+                contents: [
+                  {
+                    type: 'button',
+                    action: {
+                      type: 'uri',
+                      label: 'ホームページ',
+                      uri: 'https://shinbunbun.info/',
+                    },
+                    style: 'primary',
+                    offsetBottom: '10px',
+                  },
+                  {
+                    type: 'button',
+                    action: {
+                      type: 'uri',
+                      label: 'Twitter',
+                      uri: 'https://twitter.com/shinbunbun_',
+                    },
+                    style: 'primary',
+                    color: '#1DA1F2',
+                  },
+                ],
+                paddingTop: '10px',
               },
             ],
+          },
+          styles: {
+            header: {
+              backgroundColor: '#008282',
+            },
           },
         },
       };
