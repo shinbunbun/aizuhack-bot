@@ -4,56 +4,56 @@ const textEvent = (event) => {
   // メッセージのテキストごとに条件分岐
   switch (event.message.text) {
     // 'こんにちは'というメッセージが送られてきた時
-    case "こんにちは": {
+    case 'こんにちは': {
       // 返信するメッセージを作成
       message = {
-        type: "text",
-        text: "Hello, world",
+        type: 'text',
+        text: 'Hello, world',
       };
       break;
     }
     // '複数メッセージ'というメッセージが送られてきた時
-    case "複数メッセージ": {
+    case '複数メッセージ': {
       // 返信するメッセージを作成
       message = [
         {
-          type: "text",
-          text: "Hello, user",
+          type: 'text',
+          text: 'Hello, user',
         },
         {
-          type: "text",
-          text: "May I help you?",
+          type: 'text',
+          text: 'May I help you?',
         },
       ];
       break;
     }
     // 'クイックリプライ'というメッセージが送られてきた時
-    case "クイックリプライ": {
+    case 'クイックリプライ': {
       // 返信するメッセージを作成
       message = {
-        type: "text",
-        text: "クイックリプライ（以下のアクションはクイックリプライ専用で、他のメッセージタイプでは使用できません）",
+        type: 'text',
+        text: 'クイックリプライ（以下のアクションはクイックリプライ専用で、他のメッセージタイプでは使用できません）',
         quickReply: {
           items: [
             {
-              type: "action",
+              type: 'action',
               action: {
-                type: "camera",
-                label: "カメラを開く",
+                type: 'camera',
+                label: 'カメラを開く',
               },
             },
             {
-              type: "action",
+              type: 'action',
               action: {
-                type: "cameraRoll",
-                label: "カメラロールを開く",
+                type: 'cameraRoll',
+                label: 'カメラロールを開く',
               },
             },
             {
-              type: "action",
+              type: 'action',
               action: {
-                type: "location",
-                label: "位置情報画面を開く",
+                type: 'location',
+                label: '位置情報画面を開く',
               },
             },
           ],
@@ -62,151 +62,151 @@ const textEvent = (event) => {
       break;
     }
     // 'スタンプメッセージ'というメッセージが送られてきた時
-    case "スタンプメッセージ": {
+    case 'スタンプメッセージ': {
       // 返信するメッセージを作成
       message = {
-        type: "sticker",
-        packageId: "446",
-        stickerId: "1988",
+        type: 'sticker',
+        packageId: '446',
+        stickerId: '1988',
       };
       break;
     }
     // '画像メッセージ'というメッセージが送られてきた時
-    case "画像メッセージ": {
+    case '画像メッセージ': {
       // 返信するメッセージを作成
       message = {
-        type: "image",
-        originalContentUrl: "https://shinbunbun.info/images/photos/7.jpeg",
-        previewImageUrl: "https://shinbunbun.info/images/photos/7.jpeg",
+        type: 'image',
+        originalContentUrl: 'https://shinbunbun.info/images/photos/7.jpeg',
+        previewImageUrl: 'https://shinbunbun.info/images/photos/7.jpeg',
       };
       break;
     }
-    case "音声メッセージ": {
+    case '音声メッセージ': {
       message = {
-        type: "audio",
+        type: 'audio',
         originalContentUrl:
-          "https://github.com/shinbunbun/aizuhack-bot/blob/master/media/demo.m4a?raw=true",
+          'https://github.com/shinbunbun/aizuhack-bot/blob/master/media/demo.m4a?raw=true',
         duration: 6000,
       };
       break;
     }
     // todo
-    case "動画メッセージ": {
+    case '動画メッセージ': {
       message = {
-        type: "video",
-        originalContentUrl: "",
-        previewImageUrl: "",
+        type: 'video',
+        originalContentUrl: '',
+        previewImageUrl: '',
       };
       break;
     }
     // '位置情報メッセージ'というメッセージが送られてきた時
-    case "位置情報メッセージ": {
+    case '位置情報メッセージ': {
       // 返信するメッセージを作成
       message = {
-        type: "location",
-        title: "my location",
-        address: "〒160-0004 東京都新宿区四谷一丁目6番1号",
+        type: 'location',
+        title: 'my location',
+        address: '〒160-0004 東京都新宿区四谷一丁目6番1号',
         latitude: 35.687574,
         longitude: 139.72922,
       };
       break;
     }
     // 'イメージマップメッセージ'というメッセージが送られてきた時
-    case "イメージマップメッセージ": {
+    case 'イメージマップメッセージ': {
       //イメージマップの画像の作成方法には細かい指定があります。参考→https://developers.line.biz/ja/reference/messaging-api/#imagemap-message
       message = [
         {
-          type: "imagemap",
+          type: 'imagemap',
           baseUrl:
-            "https://youkan-storage.s3.ap-northeast-1.amazonaws.com/ubic_bunbun",
-          altText: "This is an imagemap",
+            'https://youkan-storage.s3.ap-northeast-1.amazonaws.com/ubic_bunbun',
+          altText: 'This is an imagemap',
           baseSize: {
             width: 1040,
             height: 597,
           },
           actions: [
             {
-              type: "uri",
+              type: 'uri',
               area: {
                 x: 26,
                 y: 113,
                 width: 525,
                 height: 170,
               },
-              linkUri: "https://www.u-aizu.ac.jp/intro/faculty/ubic/",
+              linkUri: 'https://www.u-aizu.ac.jp/intro/faculty/ubic/',
             },
             {
-              type: "uri",
+              type: 'uri',
               area: {
                 x: 33,
                 y: 331,
                 width: 780,
                 height: 177,
               },
-              linkUri: "https://shinbunbun.info/about/",
+              linkUri: 'https://shinbunbun.info/about/',
             },
             {
-              type: "uri",
+              type: 'uri',
               area: {
                 x: 939,
                 y: 484,
                 width: 94,
                 height: 105,
               },
-              linkUri: "https://www.u-aizu.ac.jp/",
+              linkUri: 'https://www.u-aizu.ac.jp/',
             },
           ],
         },
         {
-          type: "text",
-          text: "「UBIC」や「しんぶんぶん」のところをTAPしてみよう！",
+          type: 'text',
+          text: '「UBIC」や「しんぶんぶん」のところをTAPしてみよう！',
         },
       ];
       break;
     }
     // 'ボタンテンプレート'というメッセージが送られてきた時
-    case "ボタンテンプレート": {
+    case 'ボタンテンプレート': {
       // 返信するメッセージを作成
       message = {
-        type: "template",
-        altText: "ボタンテンプレート",
+        type: 'template',
+        altText: 'ボタンテンプレート',
         template: {
-          type: "buttons",
-          thumbnailImageUrl: "https://shinbunbun.info/images/photos/7.jpeg",
-          imageAspectRatio: "rectangle",
-          imageSize: "cover",
-          imageBackgroundColor: "#FFFFFF",
-          title: "ボタンテンプレート",
-          text: "ボタンだお",
+          type: 'buttons',
+          thumbnailImageUrl: 'https://shinbunbun.info/images/photos/7.jpeg',
+          imageAspectRatio: 'rectangle',
+          imageSize: 'cover',
+          imageBackgroundColor: '#FFFFFF',
+          title: 'ボタンテンプレート',
+          text: 'ボタンだお',
           defaultAction: {
-            type: "uri",
-            label: "View detail",
-            uri: "https://shinbunbun.info/images/photos/",
+            type: 'uri',
+            label: 'View detail',
+            uri: 'https://shinbunbun.info/images/photos/',
           },
           actions: [
             {
-              type: "postback",
-              label: "ポストバックアクション",
-              data: "button-postback",
+              type: 'postback',
+              label: 'ポストバックアクション',
+              data: 'button-postback',
             },
             {
-              type: "message",
-              label: "メッセージアクション",
-              text: "button-message",
+              type: 'message',
+              label: 'メッセージアクション',
+              text: 'button-message',
             },
             {
-              type: "uri",
-              label: "URIアクション",
-              uri: "https://shinbunbun.info/",
+              type: 'uri',
+              label: 'URIアクション',
+              uri: 'https://shinbunbun.info/',
             },
             {
-              type: "datetimepicker",
-              label: "日時選択アクション",
-              data: "button-date",
-              mode: "datetime",
-              initial: "2021-06-01t00:00",
-              max: "2022-12-31t23:59",
-              min: "2021-06-01t00:00",
+              type: 'datetimepicker',
+              label: '日時選択アクション',
+              data: 'button-date',
+              mode: 'datetime',
+              initial: '2021-06-01t00:00',
+              max: '2022-12-31t23:59',
+              min: '2021-06-01t00:00',
             },
           ],
         },
@@ -214,24 +214,24 @@ const textEvent = (event) => {
       break;
     }
     // '確認テンプレート'というメッセージが送られてきた時
-    case "確認テンプレート": {
+    case '確認テンプレート': {
       // 返信するメッセージを作成
       message = {
-        type: "template",
-        altText: "確認テンプレート",
+        type: 'template',
+        altText: '確認テンプレート',
         template: {
-          type: "confirm",
-          text: "確認テンプレート",
+          type: 'confirm',
+          text: '確認テンプレート',
           actions: [
             {
-              type: "message",
-              label: "はい",
-              text: "yes",
+              type: 'message',
+              label: 'はい',
+              text: 'yes',
             },
             {
-              type: "message",
-              label: "いいえ",
-              text: "no",
+              type: 'message',
+              label: 'いいえ',
+              text: 'no',
             },
           ],
         },
@@ -239,99 +239,99 @@ const textEvent = (event) => {
       break;
     }
     // 'カルーセルテンプレート'というメッセージが送られてきた時
-    case "カルーセルテンプレート": {
+    case 'カルーセルテンプレート': {
       // 返信するメッセージを作成
       message = {
-        type: "template",
-        altText: "カルーセルテンプレート",
+        type: 'template',
+        altText: 'カルーセルテンプレート',
         template: {
-          type: "carousel",
+          type: 'carousel',
           columns: [
             {
-              thumbnailImageUrl: "https://shinbunbun.info/images/photos/7.jpeg",
-              imageBackgroundColor: "#FFFFFF",
-              title: "タイトル1",
-              text: "説明1",
+              thumbnailImageUrl: 'https://shinbunbun.info/images/photos/7.jpeg',
+              imageBackgroundColor: '#FFFFFF',
+              title: 'タイトル1',
+              text: '説明1',
               defaultAction: {
-                type: "uri",
-                label: "View detail",
-                uri: "https://shinbunbun.info/",
+                type: 'uri',
+                label: 'View detail',
+                uri: 'https://shinbunbun.info/',
               },
               actions: [
                 {
-                  type: "postback",
-                  label: "ポストバック",
-                  data: "postback-carousel-1",
+                  type: 'postback',
+                  label: 'ポストバック',
+                  data: 'postback-carousel-1',
                 },
                 {
-                  type: "uri",
-                  label: "URIアクション",
-                  uri: "https://shinbunbun.info/",
+                  type: 'uri',
+                  label: 'URIアクション',
+                  uri: 'https://shinbunbun.info/',
                 },
               ],
             },
             {
               thumbnailImageUrl:
-                "https://shinbunbun.info/images/photos/10.jpeg",
-              imageBackgroundColor: "#FFFFFF",
-              title: "タイトル2",
-              text: "説明2",
+                'https://shinbunbun.info/images/photos/10.jpeg',
+              imageBackgroundColor: '#FFFFFF',
+              title: 'タイトル2',
+              text: '説明2',
               defaultAction: {
-                type: "uri",
-                label: "View detail",
-                uri: "https://shinbunbun.info/",
+                type: 'uri',
+                label: 'View detail',
+                uri: 'https://shinbunbun.info/',
               },
               actions: [
                 {
-                  type: "postback",
-                  label: "ポストバック",
-                  data: "postback-carousel-2",
+                  type: 'postback',
+                  label: 'ポストバック',
+                  data: 'postback-carousel-2',
                 },
                 {
-                  type: "uri",
-                  label: "URIアクション",
-                  uri: "https://shinbunbun.info/",
+                  type: 'uri',
+                  label: 'URIアクション',
+                  uri: 'https://shinbunbun.info/',
                 },
               ],
             },
           ],
-          imageAspectRatio: "rectangle",
-          imageSize: "cover",
+          imageAspectRatio: 'rectangle',
+          imageSize: 'cover',
         },
       };
       break;
     }
     // '画像カルーセルテンプレート'というメッセージが送られてきた時
-    case "画像カルーセルテンプレート": {
+    case '画像カルーセルテンプレート': {
       // 返信するメッセージを作成
       message = {
-        type: "template",
-        altText: "画像カルーセルテンプレート",
+        type: 'template',
+        altText: '画像カルーセルテンプレート',
         template: {
-          type: "image_carousel",
+          type: 'image_carousel',
           columns: [
             {
-              imageUrl: "https://shinbunbun.info/images/photos/4.jpeg",
+              imageUrl: 'https://shinbunbun.info/images/photos/4.jpeg',
               action: {
-                type: "postback",
-                label: "ポストバック",
-                data: "image-carousel-1",
+                type: 'postback',
+                label: 'ポストバック',
+                data: 'image-carousel-1',
               },
             },
             {
-              imageUrl: "https://shinbunbun.info/images/photos/5.jpeg",
+              imageUrl: 'https://shinbunbun.info/images/photos/5.jpeg',
               action: {
-                type: "message",
-                label: "メッセージ",
-                text: "いえい",
+                type: 'message',
+                label: 'メッセージ',
+                text: 'いえい',
               },
             },
             {
-              imageUrl: "https://shinbunbun.info/images/photos/7.jpeg",
+              imageUrl: 'https://shinbunbun.info/images/photos/7.jpeg',
               action: {
-                type: "uri",
-                label: "URIアクション",
-                uri: "https://shinbunbun.info/",
+                type: 'uri',
+                label: 'URIアクション',
+                uri: 'https://shinbunbun.info/',
               },
             },
           ],
@@ -340,24 +340,24 @@ const textEvent = (event) => {
       break;
     }
     // 'Flex Message'というメッセージが送られてきた時
-    case "Flex Message": {
+    case 'Flex Message': {
       // 返信するメッセージを作成
       message = {
-        type: "flex",
-        altText: "Flex Message",
+        type: 'flex',
+        altText: 'Flex Message',
         contents: {
-          type: "bubble",
+          type: 'bubble',
           body: {
-            type: "box",
-            layout: "vertical",
+            type: 'box',
+            layout: 'vertical',
             contents: [
               {
-                type: "text",
-                text: "hello",
+                type: 'text',
+                text: 'hello',
               },
               {
-                type: "text",
-                text: "world",
+                type: 'text',
+                text: 'world',
               },
             ],
           },
@@ -366,20 +366,20 @@ const textEvent = (event) => {
       break;
     }
     // 'ここはどこ'というメッセージが送られてきた時
-    case "ここはどこ": {
+    case 'ここはどこ': {
       // 送信元がユーザーとの個チャだった場合
-      if (event.source.type === "user") {
+      if (event.source.type === 'user') {
         // 返信するメッセージを作成
         message = {
-          type: "text",
-          text: "ここは個チャだよ！",
+          type: 'text',
+          text: 'ここは個チャだよ！',
         };
         // 送信元がグループだった場合
-      } else if (event.source.type === "group") {
+      } else if (event.source.type === 'group') {
         // 返信するメッセージを作成
         message = {
-          type: "text",
-          text: "ここはグループだよ！",
+          type: 'text',
+          text: 'ここはグループだよ！',
         };
       }
       break;
@@ -388,7 +388,7 @@ const textEvent = (event) => {
     default: {
       // 返信するメッセージを作成
       message = {
-        type: "text",
+        type: 'text',
         text: `受け取ったメッセージ: ${event.message.text}\nそのメッセージの返信には対応してません...`,
       };
       break;
@@ -401,8 +401,8 @@ const textEvent = (event) => {
 const imageEvent = () => {
   // 返信するメッセージを作成
   const message = {
-    type: "text",
-    text: "画像を受け取りました！",
+    type: 'text',
+    text: '画像を受け取りました！',
   };
   // 関数の呼び出し元（index）に返信するメッセージを返す
   return message;
@@ -412,8 +412,8 @@ const imageEvent = () => {
 const videoEvent = () => {
   // 返信するメッセージを作成
   const message = {
-    type: "text",
-    text: "ビデオを受け取りました！",
+    type: 'text',
+    text: 'ビデオを受け取りました！',
   };
   // 関数の呼び出し元（index）に返信するメッセージを返す
   return message;
@@ -423,8 +423,8 @@ const videoEvent = () => {
 const audioEvent = () => {
   // 返信するメッセージを作成
   const message = {
-    type: "text",
-    text: "オーディオを受け取りました！",
+    type: 'text',
+    text: 'オーディオを受け取りました！',
   };
   // 関数の呼び出し元（index）に返信するメッセージを返す
   return message;
@@ -434,8 +434,8 @@ const audioEvent = () => {
 const fileEvent = () => {
   // 返信するメッセージを作成
   const message = {
-    type: "text",
-    text: "ファイルを受け取りました！",
+    type: 'text',
+    text: 'ファイルを受け取りました！',
   };
   // 関数の呼び出し元（index）に返信するメッセージを返す
   return message;
@@ -445,7 +445,7 @@ const fileEvent = () => {
 const locationEvent = (event) => {
   // 返信するメッセージを作成
   const message = {
-    type: "text",
+    type: 'text',
     text: `受け取った住所: ${event.message.address}`,
   };
   // 関数の呼び出し元（index）に返信するメッセージを返す
@@ -458,12 +458,12 @@ const stickerEvent = (event) => {
   // スタンプのIDごとに条件分岐
   switch (event.message.stickerId) {
     // スタンプのIDが1988だった場合
-    case "1988": {
+    case '1988': {
       // 返信するメッセージを作成
       message = {
-        type: "sticker",
-        packageId: "446",
-        stickerId: "1989",
+        type: 'sticker',
+        packageId: '446',
+        stickerId: '1989',
       };
       break;
     }
@@ -471,7 +471,7 @@ const stickerEvent = (event) => {
     default: {
       // 返信するメッセージを作成
       message = {
-        type: "text",
+        type: 'text',
         text: `受け取ったstickerId: ${event.message.stickerId}\nそのスタンプの返信には対応してません...`,
       };
       break;
@@ -486,43 +486,43 @@ exports.index = async (event) => {
   let message;
   // メッセージタイプごとの条件分岐
   switch (event.message.type) {
-    case "text": {
+    case 'text': {
       // テキストの場合はtextEventを呼び出す
       // 実行結果をmessageに格納する
       message = textEvent(event);
       break;
     }
-    case "image": {
+    case 'image': {
       // イメージの場合はimageEventを呼び出す
       // 実行結果をmessageに格納する
       message = imageEvent();
       break;
     }
-    case "video": {
+    case 'video': {
       // ビデオの場合はvideoEventを呼び出す
       // 実行結果をmessageに格納する
       message = videoEvent();
       break;
     }
-    case "audio": {
+    case 'audio': {
       // オーディオの場合はaudioEventを呼び出す
       // 実行結果をmessageに格納する
       message = audioEvent();
       break;
     }
-    case "file": {
+    case 'file': {
       // ファイルの場合はfileEventを呼び出す
       // 実行結果をmessageに格納する
       message = fileEvent();
       break;
     }
-    case "location": {
+    case 'location': {
       // 位置情報の場合はlocationEventを呼び出す
       // 実行結果をmessageに格納する
       message = locationEvent(event);
       break;
     }
-    case "sticker": {
+    case 'sticker': {
       // スタンプの場合はstickerEventを呼び出す
       // 実行結果をmessageに格納する
       message = stickerEvent(event);
@@ -532,8 +532,8 @@ exports.index = async (event) => {
     default: {
       // 返信するメッセージを作成
       message = {
-        type: "text",
-        text: "そのイベントには対応していません...",
+        type: 'text',
+        text: 'そのイベントには対応していません...',
       };
       break;
     }
