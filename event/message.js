@@ -86,7 +86,8 @@ const textEvent = (event) => {
       // 返信するメッセージを作成
       message = {
         type: 'audio',
-        originalContentUrl: 'https://github.com/shinbunbun/aizuhack-bot/blob/master/media/demo.m4a?raw=true',
+        originalContentUrl:
+          'https://github.com/shinbunbun/aizuhack-bot/blob/master/media/demo.m4a?raw=true',
         duration: 6000,
       };
       break;
@@ -115,7 +116,55 @@ const textEvent = (event) => {
     }
     // 'イメージマップメッセージ'というメッセージが送られてきた時
     case 'イメージマップメッセージ': {
-      // todo
+      //イメージマップの画像の作成方法には細かい指定があります。参考→https://developers.line.biz/ja/reference/messaging-api/#imagemap-message
+      message = [
+        {
+          type: 'imagemap',
+          baseUrl:
+            'https://youkan-storage.s3.ap-northeast-1.amazonaws.com/ubic_bunbun',
+          altText: 'This is an imagemap',
+          baseSize: {
+            width: 1040,
+            height: 597,
+          },
+          actions: [
+            {
+              type: 'uri',
+              area: {
+                x: 26,
+                y: 113,
+                width: 525,
+                height: 170,
+              },
+              linkUri: 'https://www.u-aizu.ac.jp/intro/faculty/ubic/',
+            },
+            {
+              type: 'uri',
+              area: {
+                x: 33,
+                y: 331,
+                width: 780,
+                height: 177,
+              },
+              linkUri: 'https://shinbunbun.info/about/',
+            },
+            {
+              type: 'uri',
+              area: {
+                x: 939,
+                y: 484,
+                width: 94,
+                height: 105,
+              },
+              linkUri: 'https://www.u-aizu.ac.jp/',
+            },
+          ],
+        },
+        {
+          type: 'text',
+          text: '「UBIC」や「しんぶんぶん」のところをTAPしてみよう！',
+        },
+      ];
       break;
     }
     // 'ボタンテンプレート'というメッセージが送られてきた時
@@ -225,7 +274,8 @@ const textEvent = (event) => {
               ],
             },
             {
-              thumbnailImageUrl: 'https://shinbunbun.info/images/photos/10.jpeg',
+              thumbnailImageUrl:
+                'https://shinbunbun.info/images/photos/10.jpeg',
               imageBackgroundColor: '#FFFFFF',
               title: 'タイトル2',
               text: '説明2',
