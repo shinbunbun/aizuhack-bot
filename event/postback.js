@@ -1,5 +1,5 @@
 // ポストバックイベントが飛んできた時
-exports.index = async (event) => {
+exports.index = (event) => {
   let message;
   // ポストバックデータをpostbackDataに格納
   const postbackData = event.postback.data;

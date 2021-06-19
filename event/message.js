@@ -1,5 +1,5 @@
 // テキストメッセージの処理をする関数
-const textEvent = (event) => {
+const textEvent = async (event, client) => {
   let message;
   // メッセージのテキストごとに条件分岐
   switch (event.message.text) {
@@ -425,6 +425,17 @@ const textEvent = (event) => {
       };
       break;
     }
+    // 'プロフィール'というメッセージが送られてきた時
+    case 'プロフィール': {
+      // ユーザーのプロフィール情報を取得
+      const profile = await client.getProfile(event.source.userId);
+      // 返信するメッセージを作成
+      message = {
+        type: 'text',
+        text: `あなたの名前: ${profile.displayName}\nユーザーID: ${profile.userId}\nプロフィール画像のURL: ${profile.pictureUrl}\nステータスメッセージ: ${profile.statusMessage}`,
+      };
+      break;
+    }
     // 'ここはどこ'というメッセージが送られてきた時
     case 'ここはどこ': {
       // 送信元がユーザーとの個チャだった場合
@@ -542,14 +553,14 @@ const stickerEvent = (event) => {
 };
 
 // メッセージイベントが飛んできた時に呼び出される
-exports.index = async (event) => {
+exports.index = (event, client) => {
   let message;
   // メッセージタイプごとの条件分岐
   switch (event.message.type) {
     case 'text': {
       // テキストの場合はtextEventを呼び出す
       // 実行結果をmessageに格納する
-      message = textEvent(event);
+      message = textEvent(event, client);
       break;
     }
     case 'image': {

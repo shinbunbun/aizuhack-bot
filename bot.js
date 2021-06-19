@@ -27,25 +27,25 @@ exports.index = (req, res) => {
   if (signature === checkHeader) {
     // eventsは配列になっているため、forEachで1つずつ処理をする
     // 例えば同時に2つメッセージがきた場合は配列に入って1つのWebhookで飛んでくることがある
-    events.forEach(async (event) => {
+    events.forEach((event) => {
       // イベントごとに条件分岐
       switch (event.type) {
         case 'message': {
           // メッセージイベントが飛んできた時はmessage.jsのindexを呼び出す
           // 処理結果をmessageに格納
-          message = await messageFunc.index(event);
+          message = messageFunc.index(event, client);
           break;
         }
         case 'unsend': {
           // 送信取消イベントが飛んできた時はunsend.jsのindexを呼び出す
           // 処理結果をmessageに格納
-          message = await unsendFunc.index(event);
+          message = unsendFunc.index(event);
           break;
         }
         case 'postback': {
           // ポストバックイベントが飛んできた時はpostback.jsのindexを呼び出す
           // 処理結果をmessageに格納
-          message = await postbackFunc.index(event);
+          message = postbackFunc.index(event);
           break;
         }
         case 'join': {

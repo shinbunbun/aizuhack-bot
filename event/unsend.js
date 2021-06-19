@@ -1,5 +1,5 @@
 // 送信取消イベントが飛んできた時
-exports.index = async (event) => {
+exports.index = (event) => {
   // 返信するメッセージを作成
   const message = {
     type: 'text',
