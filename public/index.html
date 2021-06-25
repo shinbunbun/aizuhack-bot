@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aizu Hack Liff</title>
+    <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+    <link href="style/style.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1> LIFFの世界へようこそ</h1>
+        <section>
+            <h3>liff.sendMessages()</h3>
+            <div>
+                <input name="sendText" type="text" maxlength="120" id="sendMessageInput" value="こんにちは" />
+                <button id="sendMessageButton" disabled>
+                    送信!
+                </button>
+            </div>
+        </section>
+        <section>
+            <h3>liff.sendMessages()</h3>
+            <div>
+                <input name="sendText" type="text" maxlength="120" id="shareTargetPickerInput" value="こんにちは" />
+                <button id="shareTargetPickerButton" disabled>
+                    送信先を選ぶ
+                </button>
+            </div>
+        </section>
+        <section>
+            <h3>liff.getProfile()</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>key</th>
+                        <th>value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>userId</td>
+                        <td id="profileUserId">loading</td>
+                    </tr>
+                    <tr>
+                        <td>displayName</td>
+                        <td id="profileDisplayName">loading</td>
+                    </tr>
+                    <tr>
+                        <td>pictureUrl</td>
+                        <td id="profilePictureUrl">loading</td>
+                    </tr>
+                    <tr>
+                        <td>statusMessage</td>
+                        <td id="profileStatusMessage">loading</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <section>
+            <h3>liff.getOS()</h3>
+            <p id="os">loading</p>
+        </section>
+        <section>
+            <h3>liff.getLanguage()</h3>
+            <p id="language">loading</p>
+        </section>
+        <section>
+            <h3>liff.getVersion()</h3>
+            <p id="version">loading</p>
+        </section>
+        <section>
+            <h3>liff.getLineVersion()</h3>
+            <p id="lineVersion">loading</p>
+        </section>
+        <section>
+            <h3>liff.isInClient()</h3>
+            <p id="isInClient">loading</p>
+        </section>
+        <section>
+            <h3>liff.isLoggedIn()</h3>
+            <p id="isLoggedIn">loading</p>
+        </section>
+        <section>
+            <h3>liff.getContext()</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>key</th>
+                        <th>value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>type</td>
+                        <td id="contextType">loading</td>
+                    </tr>
+                    <tr>
+                        <td>viewType</td>
+                        <td id="contextViewType">loading</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <section>
+            <h3>liff.getFriendship()</h3>
+            <p id="getFriendship">loading</p>
+        </section>
+        <section>
+            <h3>liff.scanCode()</h3>
+            <div>
+                <button id="scanCodeButton" disabled>
+                    読み取り
+                </button>
+            </div>
+            <p id="scanCodeResult"></p>
+        </section>
+        <section>
+            <h3>liff.closeWindow()</h3>
+            <div>
+                <button id="closeWindowButton" disabled>
+                    閉じる
+                </button>
+            </div>
+        </section>
+    </div>
+    <script>
+        const onSendMessageButtonClick = () => {
+            const text = document.getElementById('sendMessageInput').value
+            liff.sendMessages([{
+                "type": "text",
+                "text": text
+            }]).then(() => {
+                    alert("メッセージを送信しました")
+                    console.log('message sent');
+                }).catch((err) => {
+                    alert("エラー: " + err)
+                    console.log('error', err);
+                });
+        }
+
+        const onShareTargetPickerButtonClick = () => {
+            const text = document.getElementById('shareTargetPickerInput').value
+            liff.shareTargetPicker([
+                {
+                    'type': 'text',
+                    'text': text
+                }
+            ]).then(() => {
+                console.log('message sent');
+            }).catch((err) => {
+                alert("エラー: " + err)
+                console.log('error', err);
+            });
+        }
+
+        const onScanCodeClick = () => {
+            if (liff.scanCode) {
+                liff.scanCode().then((result) => {
+                    document.querySelector("#scanCodeResult").innerText = result.value
+                    console.log('codescan');
+                }).catch((err) => {
+                    alert("エラー: " + err)
+                    console.log('error', err);
+                });
+            }
+        }
+
+        const onCloseWindowClick = () => {
+            liff.closeWindow()
+        }
+        document.querySelector("#os").innerText = liff.getOS()
+        document.querySelector("#language").innerText = liff.getLanguage()
+        document.querySelector("#version").innerText = liff.getVersion()
+        document.querySelector("#lineVersion").innerText = liff.getLineVersion()
+        document.querySelector("#isInClient").innerText = liff.isInClient()
+        liff.init({
+            liffId: "1656145931-o2NqjMQ2"
+        }).then(() => {
+            document.querySelector("#isLoggedIn").innerText = liff.isLoggedIn()
+            const context = liff.getContext()
+            document.querySelector("#contextType").innerText = context.type
+            document.querySelector("#contextViewType").innerText = context.viewType
+            liff.getFriendship().then((data) => {
+                document.querySelector("#getFriendship").innerText = data.friendFlag
+            })
+            if(!liff.isLoggedIn()) {
+                liff.login()
+            }
+            else {
+                liff.getProfile().then(profile => {
+                    document.querySelector("#profileUserId").innerText = profile.userId
+                    document.querySelector("#profileDisplayName").innerText = profile.displayName
+                    document.querySelector("#profilePictureUrl").innerHTML =  profile.pictureUrl ? "<p>" + profile.pictureUrl + "</p><img src='" + profile.pictureUrl + "' width='200px' height='200px' />" : ""
+                    document.querySelector("#profileStatusMessage").innerText = profile.statusMessage
+                })
+                const sendMessageButton = document.getElementById('sendMessageButton');
+                const shareTargetPickerButton = document.getElementById('shareTargetPickerButton');
+                const closeWindowButton = document.getElementById('closeWindowButton');
+                const scanCodeButton = document.getElementById('scanCodeButton');
+                const _click = (window.ontouchstart === undefined)? 'click' : 'touchstart';
+                sendMessageButton.disabled = false
+                sendMessageButton.addEventListener(_click, onSendMessageButtonClick);
+                if (liff.scanCode) {
+                    scanCodeButton.disabled = false
+                    scanCodeButton.addEventListener(_click, onScanCodeClick);
+                }
+                closeWindowButton.disabled = false
+                closeWindowButton.addEventListener(_click, onCloseWindowClick);
+                shareTargetPickerButton.disabled = false
+                shareTargetPickerButton.addEventListener(_click, onShareTargetPickerButtonClick);
+
+            }
+        }).catch((e) => {
+            console.log(e)
+        } )
+    </script>
+</body>
+</html>
