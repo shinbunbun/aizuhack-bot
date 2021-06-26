@@ -1,8 +1,20 @@
 {
   "version": 2,
-  "rewrites": [
-    { "source": "/webhook", "destination": "api/server.js" },
-    { "source": "/style/:filename", "destination": "public/style/:filename"},
-    { "source": "/", "destination": "public/index.html" }
+  "rewrites": [{
+      "source": "/webhook",
+      "destination": "api/server.js"
+    },
+    {
+      "source": "/",
+      "destination": "api/server.js"
+    },
+    {
+      "source": "/style/:filename",
+      "destination": "liff/style/:filename"
+    },
+    {
+      "source": "/liff",
+      "destination": "liff/index.html"
+    }
   ]
 }
