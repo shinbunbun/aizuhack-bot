@@ -10,6 +10,7 @@
 <body>
     <div class="container">
         <h1> LIFFの世界へようこそ</h1>
+         <!-- トーク上にメッセージを送信します -->
         <section>
             <h3>liff.sendMessages()</h3>
             <div>
@@ -19,8 +20,9 @@
                 </button>
             </div>
         </section>
+        <!-- 友達やトークにメッセージを送信します -->
         <section>
-            <h3>liff.sendMessages()</h3>
+            <h3>liff.shareTargetPicker()</h3>
             <div>
                 <input name="sendText" type="text" maxlength="120" id="shareTargetPickerInput" value="こんにちは" />
                 <button id="shareTargetPickerButton" disabled>
@@ -28,6 +30,7 @@
                 </button>
             </div>
         </section>
+         <!-- ログイン情報を取得します -->
         <section>
             <h3>liff.getProfile()</h3>
             <table>
@@ -39,48 +42,59 @@
                 </thead>
                 <tbody>
                     <tr>
+                         <!-- ユーザーID -->
                         <td>userId</td>
                         <td id="profileUserId">loading</td>
                     </tr>
                     <tr>
+                         <!-- ユーザー名 -->
                         <td>displayName</td>
                         <td id="profileDisplayName">loading</td>
                     </tr>
                     <tr>
+                         <!-- ユーザーアイコン -->
                         <td>pictureUrl</td>
                         <td id="profilePictureUrl">loading</td>
                     </tr>
                     <tr>
+                         <!-- ひとことコメント -->
                         <td>statusMessage</td>
                         <td id="profileStatusMessage">loading</td>
                     </tr>
                 </tbody>
             </table>
         </section>
+        <!-- LIFFアプリを動作させている環境を取得 -->
         <section>
             <h3>liff.getOS()</h3>
             <p id="os">loading</p>
         </section>
+        <!-- LIFFアプリを動作させている環境の言語設定を取得 -->
         <section>
             <h3>liff.getLanguage()</h3>
             <p id="language">loading</p>
         </section>
+        <!-- LIFF SDKのバージョンを取得 -->
         <section>
             <h3>liff.getVersion()</h3>
             <p id="version">loading</p>
         </section>
+         <!-- ユーザーのLINEバージョンを取得 -->
         <section>
             <h3>liff.getLineVersion()</h3>
             <p id="lineVersion">loading</p>
         </section>
+        <!-- LIFFアプリをLIFFブラウザで動作させているかどうかを取得 -->
         <section>
             <h3>liff.isInClient()</h3>
             <p id="isInClient">loading</p>
         </section>
+        <!-- ユーザーがログインしているかどうかを取得 -->
         <section>
             <h3>liff.isLoggedIn()</h3>
             <p id="isLoggedIn">loading</p>
         </section>
+        <!-- LIFFアプリが起動された画面（1対1のトーク、グループ、トークルーム、または外部ブラウザ）に関する情報を取得 -->
         <section>
             <h3>liff.getContext()</h3>
             <table>
@@ -102,10 +116,12 @@
                 </tbody>
             </table>
         </section>
+        <!-- ユーザーとLINE公式アカウントの友だち関係を取得 -->
         <section>
             <h3>liff.getFriendship()</h3>
             <p id="getFriendship">loading</p>
         </section>
+        <!-- LINEのQRコードリーダーを起動し、読み取った文字列を取得（iphoneは大体動きません） -->
         <section>
             <h3>liff.scanCode()</h3>
             <div>
@@ -115,6 +131,7 @@
             </div>
             <p id="scanCodeResult"></p>
         </section>
+        <!-- LIFFアプリを閉じる -->
         <section>
             <h3>liff.closeWindow()</h3>
             <div>
@@ -127,6 +144,7 @@
     <script>
         const onSendMessageButtonClick = () => {
             const text = document.getElementById('sendMessageInput').value
+            // トーク上にメッセージを送信します
             liff.sendMessages([{
                 "type": "text",
                 "text": text
@@ -141,6 +159,7 @@
 
         const onShareTargetPickerButtonClick = () => {
             const text = document.getElementById('shareTargetPickerInput').value
+            //友達やトークにメッセージを送信します
             liff.shareTargetPicker([
                 {
                     'type': 'text',
@@ -155,6 +174,7 @@
         }
 
         const onScanCodeClick = () => {
+            //LINEのQRコードリーダーを起動し、読み取った文字列を取得
             if (liff.scanCode) {
                 liff.scanCode().then((result) => {
                     document.querySelector("#scanCodeResult").innerText = result.value
@@ -167,6 +187,7 @@
         }
 
         const onCloseWindowClick = () => {
+            //LIFFアプリを閉じる
             liff.closeWindow()
         }
         document.querySelector("#os").innerText = liff.getOS()
@@ -175,19 +196,22 @@
         document.querySelector("#lineVersion").innerText = liff.getLineVersion()
         document.querySelector("#isInClient").innerText = liff.isInClient()
         liff.init({
-            liffId: "<liffId>"
+            liffId: "LIFFID"
         }).then(() => {
             document.querySelector("#isLoggedIn").innerText = liff.isLoggedIn()
             const context = liff.getContext()
             document.querySelector("#contextType").innerText = context.type
             document.querySelector("#contextViewType").innerText = context.viewType
+            //ユーザーとLINE公式アカウントの友だち関係を取得
             liff.getFriendship().then((data) => {
                 document.querySelector("#getFriendship").innerText = data.friendFlag
             })
             if(!liff.isLoggedIn()) {
+                //ユーザーがログインしているかどうかを取得
                 liff.login()
             }
             else {
+                //ログイン情報を取得します
                 liff.getProfile().then(profile => {
                     document.querySelector("#profileUserId").innerText = profile.userId
                     document.querySelector("#profileDisplayName").innerText = profile.displayName
@@ -209,7 +233,6 @@
                 closeWindowButton.addEventListener(_click, onCloseWindowClick);
                 shareTargetPickerButton.disabled = false
                 shareTargetPickerButton.addEventListener(_click, onShareTargetPickerButtonClick);
-
             }
         }).catch((e) => {
             console.log(e)
