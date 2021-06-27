@@ -1,14 +1,146 @@
+/* eslint-disable no-undef */
+// 追加
+const axios = require('axios');
+
+// eslint-disable-next-line no-undef
+dbAPI = 'https://sheetdb.io/api/v1/vtjbs6nqe7duz';
+
 // テキストメッセージの処理をする関数
 const textEvent = async (event, client) => {
+  // ユーザーIDを取得
+  const { userId } = event.source;
+  // DBからユーザーのデータを取得
+  const data = (await axios.get(`${dbAPI}/search?userId=${userId}`)).data[0];
+  // もしそのユーザーのデータが存在する場合
+  if (data) {
+  // もしcontextがmemoModeだったら
+    if (data.context === 'memoMode') {
+    // DBへメッセージのデータを追加してcontextを空にする
+      await axios.put(`${dbAPI}/userId/${userId}`, { data: [{ message: event.message.text, context: '' }] });
+      // index関数に返信するメッセージを返す
+      return {
+        type: 'text',
+        text: `"${event.message.text}"というメッセージをdbに追加しました`,
+      };
+    }
+  }
+
   let message;
   // メッセージのテキストごとに条件分岐
   switch (event.message.text) {
+    // 'メモ'というメッセージが送られてきた時
+    case 'メモ': {
+      // ユーザーのデータがDBに存在する時
+      if (data) {
+        // 返信するメッセージを作成
+        message = {
+          type: 'text',
+          text: `メモには以下のメッセージが保存されています\n\n${data.message}`,
+        };
+      } else {
+        // 返信するメッセージを作成
+        message = {
+          type: 'text',
+          text: 'メモが存在しません',
+        };
+      }
+      break;
+    }
+    // 'メモ開始'というメッセージが送られてきた時
+    case 'メモ開始': {
+      if (data) {
+        await axios.put(`${dbAPI}/userId/${userId}`, { data: [{ context: 'memoMode' }] });
+      } else {
+        await axios.post(dbAPI, { data: [{ userId, context: 'memoMode' }] });
+      }
+      // 返信するメッセージを作成
+      message = {
+        type: 'text',
+        text: 'メモモードを開始しました',
+      };
+      break;
+    }
+
+    // 天気予報というメッセージが送られてきた時
+    case '天気予報': {
+      // axiosを使ってAPIにGETリクエストを送り、レスポンスのdataを変数resに格納
+      const res = (await axios.get('https://www.jma.go.jp/bosai/forecast/data/forecast/070000.json')).data;
+      // 返信するメッセージを作成
+      message = {
+        type: 'text',
+        text: `【天気予報】
+
+      ${res[0].timeSeries[0].timeDefines[0]}: ${res[0].timeSeries[0].areas[2].weathers[0]}
+      ${res[0].timeSeries[0].timeDefines[1]}: ${res[0].timeSeries[0].areas[2].weathers[1]}
+      ${res[0].timeSeries[0].timeDefines[2]}: ${res[0].timeSeries[0].areas[2].weathers[2]}
+      `,
+      };
+      break;
+    }
+
     // 'こんにちは'というメッセージが送られてきた時
     case 'こんにちは': {
       // 返信するメッセージを作成
       message = {
         type: 'text',
         text: 'Hello, world',
+      };
+      break;
+    }
+    case '憂鬱': {
+      // 返信するメッセージを作成
+      message = {
+        type: 'text',
+        text: 'ぴええええええーーーん!!!!!',
+      };
+      break;
+    }
+
+    case '病み': {
+      // 返信するメッセージを作成
+      message = {
+        type: 'text',
+        text: 'ぴええええええーーーん!!!!!',
+      };
+      break;
+    }
+
+    case '感情的過ぎ': {
+      // 返信するメッセージを作成
+      message = {
+        type: 'text',
+        text: 'ぱおおおおおおおん！！',
+      };
+      break;
+    }
+
+    case 'menu': {
+      message = {
+        type: 'template',
+        altText: 'this is a buttons template',
+        template: {
+          type: 'buttons',
+          imageBackgroundColor: '#A512B6',
+          title: 'メンヘラ　英単語',
+          text: '用語を選択してください',
+          actions: [
+            {
+              type: 'message',
+              label: '憂鬱',
+              text: '憂鬱',
+            },
+            {
+              type: 'message',
+              label: '病み',
+              text: '病み',
+            },
+            {
+              type: 'message',
+              label: '感情的過ぎ',
+              text: '感情的過ぎ',
+            },
+          ],
+        },
       };
       break;
     }
@@ -599,6 +731,7 @@ exports.index = (event, client) => {
       message = stickerEvent(event);
       break;
     }
+
     // それ以外の場合
     default: {
       // 返信するメッセージを作成

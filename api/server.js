@@ -1,3 +1,5 @@
+// server.js→bot.js(index)→message.js(index)→textEvent
+
 // モジュールの読み込み
 const express = require('express');
 const line = require('@line/bot-sdk');
