@@ -1,0 +1,62 @@
+.container {
+    margin-right: auto;
+    margin-left : auto;
+    width:100vw;
+    max-width: 700px;
+    text-align: center;
+    overflow-x: hidden;
+}
+
+button, input, optgroup, select, textarea {
+    font-family: inherit;
+    font-size: 100%;
+    margin: 0;
+    padding: 0;
+    line-height: inherit;
+    color: inherit;
+}
+
+button, input {
+    overflow: visible;
+}
+
+
+button, select {
+    text-transform: none;
+}
+
+button {
+     background: transparent;
+     padding: 0;
+}
+
+
+button, [role="button"] {
+    cursor: pointer;
+}
+
+button {
+    display: inline-flex;
+    appearance: none;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    user-select: none;
+    position: relative;
+    white-space: nowrap;
+    vertical-align: middle;
+    outline: transparent solid 2px;
+    outline-offset: 2px;
+    width: auto;
+    line-height: 1.2;
+}
+
+table {
+    padding: 0 5px;
+}
+td[id] {
+    table-layout: fixed;
+    word-break: break-all;
+    word-wrap: anywhere;
+}

@@ -600,7 +600,7 @@ const textEvent = async (event, client) => {
   return message;
 };
 
-// イメージイベントを処理する関数
+// イメージを処理する関数
 const imageEvent = () => {
   // 返信するメッセージを作成
   const message = {
@@ -611,7 +611,7 @@ const imageEvent = () => {
   return message;
 };
 
-// ビデオイベントを処理する関数
+// ビデオを処理する関数
 const videoEvent = () => {
   // 返信するメッセージを作成
   const message = {
@@ -622,7 +622,7 @@ const videoEvent = () => {
   return message;
 };
 
-// オーディオイベントを処理する関数
+// オーディオを処理する関数
 const audioEvent = () => {
   // 返信するメッセージを作成
   const message = {
@@ -633,7 +633,7 @@ const audioEvent = () => {
   return message;
 };
 
-// ファイルイベントを処理する関数
+// ファイルを処理する関数
 const fileEvent = () => {
   // 返信するメッセージを作成
   const message = {
@@ -644,7 +644,7 @@ const fileEvent = () => {
   return message;
 };
 
-// 位置情報イベントを処理する関数
+// 位置情報を処理する関数
 const locationEvent = (event) => {
   // 返信するメッセージを作成
   const message = {

@@ -1,7 +1,8 @@
 {
   "version": 2,
-  "routes": [
-      { "src": "/", "dest": "api/server.js" },
-      { "src": "/webhook", "dest": "api/server.js" }
+  "rewrites": [
+    { "source": "/webhook", "destination": "api/server.js" },
+    { "source": "/style/:filename", "destination": "public/style/:filename"},
+    { "source": "/", "destination": "public/index.html" }
   ]
 }
