@@ -21,7 +21,7 @@ LINEBotの入門記事やサンプルはたくさんありますが、その多�
 1. [LINEBotとは](https://docs.google.com/presentation/d/1wizsJ9P8IQZnIknm1FX98IxT35ezP4QsFO2yT673GDU)
 2. [AizuHack LINEBot勉強会 Vol.1](https://qiita.com/shinbunbun_/items/7efef6db31514831143d)
 3. [AizuHack LINEBot勉強会 Vol.2](https://qiita.com/shinbunbun_/items/4034e9c2c7553ed3107e)
-4. [AizuHack LINEBot勉強会 Extra]()
+4. [AizuHack LINEBot勉強会 Extra](https://qiita.com/shinbunbun_/items/0dfc42584518dc60e3e7)
 
 ## ハンズオン資料のコントリビュートについて
 
