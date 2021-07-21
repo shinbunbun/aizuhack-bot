@@ -1,6 +1,6 @@
 # AizuHack LINEBot勉強会
 
-こんにちは、会津大学学部一年のしんぶんぶんです。
+こんにちは、wawaaaaaahahahahhahahahahahahah
 
 本リポジトリはAizuHackのLINEBot勉強会のソースコードになります。
 
