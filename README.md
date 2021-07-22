@@ -1,6 +1,6 @@
 # AizuHack LINEBot勉強会
 
-こんにちは、wawaaaaaahahahahhahahahahahahah
+こんにちは、
 
 本リポジトリはAizuHackのLINEBot勉強会のソースコードになります。
 
