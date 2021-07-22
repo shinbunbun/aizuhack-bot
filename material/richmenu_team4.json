@@ -1,0 +1,52 @@
+{
+    "size": {
+      "width": 2500,
+      "height": 1686
+    },
+    "selected": true,
+    "name": "richmenu_team4",
+    "chatBarText": "Tap to open",
+    "areas": [
+      {
+        "bounds": {
+          "x": 0,
+          "y": 0,
+          "width": 1250,
+          "height": 843
+        },
+        "action": {
+          "type": "message",
+          "text":"カレンダーURL登録"
+        }
+      },
+      {
+        "bounds": {
+            "x": 0,
+            "y": 843,
+            "width": 1250,
+            "height": 843
+        },
+        "type": "action",
+        "action": {
+        "type": "uri",
+        "label": "LMSのURL",
+        "uri": "https://elms.u-aizu.ac.jp/my/"
+        }
+      },
+      {
+        "bounds": {
+          "x": 1250,
+          "y": 0,
+          "width": 1250,
+          "height": 1686
+      },
+        "action": {
+          "type": "postback",
+          "label": "タスクの表示をする",
+          "data": "タスク表示"
+      }
+    }
+  ]
+}
+
+
