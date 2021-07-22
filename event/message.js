@@ -1,8 +1,45 @@
+const axios = require('axios');
+const dbAPI = 'https://sheetdb.io/api/v1/v35tdpllqplhg';
+
 // テキストメッセージの処理をする関数
 const textEvent = async (event, client) => {
+
+  // ユーザーIDを取得
+  const { userId } = event.source;
+  // DBからユーザーのデータを取得
+  const data = (await axios.get(`${dbAPI}/search?userId=${userId}`)).data[0];
+  // もしそのユーザーのデータが存在する場合
+  if (data) {
+    // もしcontextがmemoModeだったら
+    if (data.context === 'registerMode') {
+      // DBへメッセージのデータを追加してcontextを空にする
+      await axios.put(`${dbAPI}/userId/${userId}`, { data: [{ url: event.message.text, context: '' }] });
+      // index関数に返信するメッセージを返す
+      return {
+        type: 'text',
+        text: `"${event.message.text}"\nこのURLを登録しました`,
+      };
+    }
+  }
+
   let message;
   // メッセージのテキストごとに条件分岐
   switch (event.message.text) {
+    //'カレンダーURL登録'というメッセージが送られた時
+    case "カレンダーURL登録": {
+      if (data) {
+        await axios.put(`${dbAPI}/userId/${userId}`, {
+          data: [{ context: "registerMode" }],
+        });
+      } else {
+        await axios.post(dbAPI, { data: [{ userId, context: "registerMode" }] });
+      }
+      message = {
+        type: "text",
+        text: "カレンダーのURLを入力してください",
+      };
+      break;
+    }
     // 'こんにちは'というメッセージが送られてきた時
     case 'こんにちは': {
       // 返信するメッセージを作成
