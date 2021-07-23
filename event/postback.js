@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-const dbAPI = 'https://sheetdb.io/api/v1/v35tdpllqplhg';
+const dbAPI = 'https://sheetdb.io/api/v1/3r8wfrod9urni';
 
 // ポストバックイベントが飛んできた時
 exports.index = async (event) => {
