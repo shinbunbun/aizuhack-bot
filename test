@@ -11,3 +11,21 @@ meg
 こんにちは富士山こどもの国
 
 
+memo: 処理の流れ
+「　lineからリクエスト →　vercelのURL/webhook　→　server.js(サーバー起動)
+
+→　bot.js(messageイベントとかpostbackイベントなどの仕分け)
+　→　message.js or postback.js or .....(具体的な処理)
+→ bot.js
+
+→　lineに返す　」
+
+
+ーーーーーーーーーーーーーーーーーーーーーー
+database には　userid, url,  contextカラムがある
+「カレンダーURL登録」と送る→message.js/textEvent関数内で dbAPIに　userId とcontextに'memomode'を代入して送る
+→contextがmemomodeなので次に送信されたmessageはtextEvent関数内の冒頭でdvAPIにmessageが送信される
+→contextを空にする
+
+
+axios.[put/ post（追加）] [get(取得)]()　　apiをたたく

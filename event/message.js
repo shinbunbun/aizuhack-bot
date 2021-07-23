@@ -69,28 +69,31 @@ const textEvent = async (event, client) => {
       // 返信するメッセージを作成
       message = {
         type: 'text',
-        text: 'クイックリプライ（以下のアクションはクイックリプライ専用で、他のメッセージタイプでは使用できません）',
+        text: 'メニューから選択してください',
         quickReply: {
           items: [
             {
               type: 'action',
               action: {
-                type: 'camera',
-                label: 'カメラを開く',
+                type: 'postback',
+                label: 'something1',
+                data: 'quickreply1',
               },
             },
             {
               type: 'action',
               action: {
-                type: 'cameraRoll',
-                label: 'カメラロールを開く',
+                type: 'postback',
+                label: 'something2',
+                data: 'quickreply2',
               },
             },
             {
               type: 'action',
               action: {
-                type: 'location',
-                label: '位置情報画面を開く',
+                type: 'postback',
+                label: 'something3',
+                data: 'quickreply3',
               },
             },
           ],

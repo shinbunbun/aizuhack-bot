@@ -31,7 +31,7 @@ exports.index = (req, res) => {
       // イベントごとに条件分岐
       switch (event.type) {
         case 'message': {
-          // メッセージイベントが飛んできた時はmessage.jsのindexを呼び出す
+          // メッセージイベントが飛んできた時はmessage.jsのindexを呼び出す＊＊＊＊＊＊
           // 処理結果をmessageに格納
           message = await messageFunc.index(event, client);
           break;
@@ -43,7 +43,7 @@ exports.index = (req, res) => {
           break;
         }
         case 'postback': {
-          // ポストバックイベントが飛んできた時はpostback.jsのindexを呼び出す
+          // ポストバックイベントが飛んできた時はpostback.jsのindexを呼び出す＊＊＊＊＊＊
           // 処理結果をmessageに格納
           message = await postbackFunc.index(event);
           break;
