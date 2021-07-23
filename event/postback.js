@@ -39,9 +39,6 @@ exports.index = async (event) => {
       };
     }
   }
-
-  
-
   // 存在しない場合
   else {
     // 返信するメッセージを作成
