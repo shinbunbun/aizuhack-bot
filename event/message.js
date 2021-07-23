@@ -21,7 +21,7 @@ const textEvent = async (event, client) => {
       };
     }
   }
-  
+
   let message;
   // メッセージのテキストごとに条件分岐
   switch (event.message.text) {
