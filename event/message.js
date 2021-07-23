@@ -1,9 +1,9 @@
 const axios = require('axios');
+
 const dbAPI = 'https://sheetdb.io/api/v1/v35tdpllqplhg';
 
 // テキストメッセージの処理をする関数
 const textEvent = async (event, client) => {
-
   // ユーザーIDを取得
   const { userId } = event.source;
   // DBからユーザーのデータを取得
@@ -25,18 +25,18 @@ const textEvent = async (event, client) => {
   let message;
   // メッセージのテキストごとに条件分岐
   switch (event.message.text) {
-    //'カレンダーURL登録'というメッセージが送られた時
-    case "カレンダーURL登録": {
+    // 'カレンダーURL登録'というメッセージが送られた時
+    case 'カレンダーURL登録': {
       if (data) {
         await axios.put(`${dbAPI}/userId/${userId}`, {
-          data: [{ context: "registerMode" }],
+          data: [{ context: 'registerMode' }],
         });
       } else {
-        await axios.post(dbAPI, { data: [{ userId, context: "registerMode" }] });
+        await axios.post(dbAPI, { data: [{ userId, context: 'registerMode' }] });
       }
       message = {
-        type: "text",
-        text: "カレンダーのURLを入力してください",
+        type: 'text',
+        text: 'カレンダーのURLを入力してください',
       };
       break;
     }
@@ -379,7 +379,7 @@ const textEvent = async (event, client) => {
       };
       break;
     }
-    // 'Flex Message'というメッセージが送られてきた時
+    // 'Flex Message'というメッセージが送られてきた時 タスクの表示を行う
     case 'Flex Message': {
       // 返信するメッセージを作成
       message = {
@@ -387,75 +387,139 @@ const textEvent = async (event, client) => {
         altText: 'Flex Message',
         contents: {
           type: 'bubble',
-          header: {
-            type: 'box',
-            layout: 'vertical',
-            contents: [
-              {
-                type: 'text',
-                text: 'Flex Message',
-                color: '#FFFFFF',
-                weight: 'bold',
-              },
-            ],
-          },
-          hero: {
-            type: 'image',
-            url: 'https://pbs.twimg.com/profile_images/1236928986212478976/wDa51i9T_400x400.jpg',
-            size: 'xl',
-          },
           body: {
             type: 'box',
             layout: 'vertical',
             contents: [
               {
                 type: 'text',
-                text: 'しんぶんぶん',
-                size: 'xl',
+                text: 'moodle',
                 weight: 'bold',
-                align: 'center',
+                color: '#1DB446',
+                size: 'sm',
               },
               {
                 type: 'text',
-                text: '会津大学学部一年',
+                text: '今日(7月11日)の予定',
+                weight: 'bold',
+                size: 'md',
+                margin: 'md',
                 align: 'center',
               },
               {
                 type: 'separator',
-                margin: 'md',
+                margin: 'xxl',
               },
               {
                 type: 'box',
                 layout: 'vertical',
+                margin: 'xxl',
+                spacing: 'sm',
                 contents: [
                   {
-                    type: 'button',
-                    action: {
-                      type: 'uri',
-                      label: 'ホームページ',
-                      uri: 'https://shinbunbun.info/',
-                    },
-                    style: 'primary',
-                    offsetBottom: '10px',
+                    type: 'box',
+                    layout: 'horizontal',
+                    contents: [
+                      {
+                        type: 'text',
+                        text: 'Homework 8 ',
+                        size: 'sm',
+                        color: '#555555',
+                        flex: 3,
+                        align: 'center',
+                        gravity: 'center',
+                      },
+                      {
+                        type: 'button',
+                        action: {
+                          type: 'postback',
+                          label: '完了',
+                          data: 'hello',
+                        },
+                        flex: 2,
+                        margin: 'none',
+                        gravity: 'center',
+                        style: 'primary',
+                      },
+                    ],
                   },
                   {
-                    type: 'button',
-                    action: {
-                      type: 'uri',
-                      label: 'Twitter',
-                      uri: 'https://twitter.com/shinbunbun_',
-                    },
-                    style: 'primary',
-                    color: '#1DA1F2',
+                    type: 'separator',
+                    margin: 'xxl',
+                  },
+                  {
+                    type: 'box',
+                    layout: 'horizontal',
+                    contents: [
+                      {
+                        type: 'text',
+                        text: 'Vocabulary Quiz 8',
+                        size: 'sm',
+                        color: '#555555',
+                        flex: 3,
+                        align: 'center',
+                        gravity: 'center',
+                        margin: 'none',
+                      },
+                      {
+                        type: 'button',
+                        action: {
+                          type: 'postback',
+                          label: '完了',
+                          data: 'hello',
+                        },
+                        flex: 2,
+                        margin: 'none',
+                        gravity: 'center',
+                        style: 'primary',
+                      },
+                    ],
+                    spacing: 'none',
+                    margin: 'xxl',
+                  },
+                  {
+                    type: 'separator',
+                    margin: 'xxl',
+                  },
+                  {
+                    type: 'box',
+                    layout: 'horizontal',
+                    contents: [
+                      {
+                        type: 'text',
+                        text: 'Exercise 5 ',
+                        size: 'sm',
+                        color: '#555555',
+                        flex: 3,
+                        align: 'center',
+                        gravity: 'center',
+                      },
+                      {
+                        type: 'button',
+                        action: {
+                          type: 'postback',
+                          label: '完了',
+                          data: 'hello',
+                        },
+                        flex: 2,
+                        margin: 'none',
+                        gravity: 'center',
+                        style: 'primary',
+                      },
+                    ],
+                    margin: 'xxl',
                   },
                 ],
-                paddingTop: '10px',
+              },
+              {
+                type: 'separator',
+                margin: 'xxl',
               },
             ],
           },
           styles: {
-            header: {
-              backgroundColor: '#008282',
+            footer: {
+              separator: true,
             },
           },
         },
