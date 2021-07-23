@@ -6,22 +6,22 @@ const dbAPI = 'https://sheetdb.io/api/v1/v35tdpllqplhg';
 const textEvent = async (event, client) => {
   // ユーザーIDを取得
   const { userId } = event.source;
+
   // DBからユーザーのデータを取得
-/*  const data = (await axios.get(`${dbAPI}/search?userId=${userId}`)).data[0];
+  const data = (await axios.get(`${dbAPI}/search?userId=${userId}`)).data[0];
   // もしそのユーザーのデータが存在する場合
   if (data) {
-    // もしcontextがmemoModeだったら
-    if (data.context === 'registerMode') {
-      // DBへメッセージのデータを追加してcontextを空にする
-      await axios.put(`${dbAPI}/userId/${userId}`, { data: [{ url: event.message.text, context: '' }] });
+  // もしcontextがmemoModeだったら
+    if (data.context === 'memoMode') {
+    // DBへメッセージのデータを追加してcontextを空にする
+      await axios.put(`${dbAPI}/userId/${userId}`, { data: [{ message: event.message.text, context: '' }] });
       // index関数に返信するメッセージを返す
       return {
         type: 'text',
-        text: `"${event.message.text}"\nこのURLを登録しました`,
+        text: `"${event.message.text}"というメッセージをdbに追加しました`,
       };
     }
   }
-*/
   let message;
   // メッセージのテキストごとに条件分岐
   switch (event.message.text) {
