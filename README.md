@@ -5,6 +5,21 @@
 リッチメニューのソースファイルはmaterialフォルダの中にあります。
 
 
+flexメッセージ
+　buttonを押す→　　action: {
+                          type: 'postback',
+                          label: '完了',
+                          data: 'hello',
+                        },
+  課題　jsonの動的生成、buttonを押した後のsheetDBとの連携の実装
+
+
+リッチメニューのタスクボタンを押す
+"type": "postback",
+"label": "タスクの表示をする",
+"data": "タスク表示"
+
+
 
 
 
