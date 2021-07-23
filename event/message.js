@@ -7,7 +7,7 @@ const textEvent = async (event, client) => {
   // ユーザーIDを取得
   const { userId } = event.source;
   // DBからユーザーのデータを取得
-  const data = (await axios.get(`${dbAPI}/search?userId=${userId}`)).data[0];
+/*  const data = (await axios.get(`${dbAPI}/search?userId=${userId}`)).data[0];
   // もしそのユーザーのデータが存在する場合
   if (data) {
     // もしcontextがmemoModeだったら
@@ -21,7 +21,7 @@ const textEvent = async (event, client) => {
       };
     }
   }
-
+*/
   let message;
   // メッセージのテキストごとに条件分岐
   switch (event.message.text) {
