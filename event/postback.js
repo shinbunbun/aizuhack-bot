@@ -12,7 +12,7 @@ exports.index = async (event) => {
   let message;
   // ポストバックデータをpostbackDataに格納
   const postbackData = event.postback.data;
-  // もしevent.postback.paramsが存在する場合
+  // もしevent.postback.paramsが存在する場合 リッチメニュー切り替えor日時選択のとき
   if (event.postback.params) {
     // 返信するメッセージを作成
     message = {
@@ -21,7 +21,7 @@ exports.index = async (event) => {
     };
   }
   // タスクの表示を行う
-  else if (postbackData === 'タスク表示') {
+    switch (postbackData) {
     // ユーザーのデータがDBに存在する時
     if (data) {
       // 返信するメッセージを作成.タスクの一覧を表示
@@ -36,6 +36,7 @@ exports.index = async (event) => {
       message = {
         type: 'text',
         text: 'データが存在しません',
+
       };
     }
   }
