@@ -23,31 +23,34 @@ exports.index = async (event) => {
   // タスクの表示を行う
     switch (postbackData) {
     // ユーザーのデータがDBに存在する時
-    if (data) {
-      // 返信するメッセージを作成.タスクの一覧を表示
-      // ここだよここなんだよ
+    case 'タスク表示':{
+      if (data) {
+        // 返信するメッセージを作成.タスクの一覧を表示
+        // ここだよここなんだよ
 
-      message = {
-        type: 'text',
-        text: `以下のタスクがあります\n\ntask : ${data.task}`,
-      };
-    } else {
+        message = {
+          type: 'text',
+          text: `以下のタスクがあります\n\ntask : ${data.task}`,
+        };
+      } else {
+        // 返信するメッセージを作成
+        message = {
+          type: 'text',
+          text: 'データが存在しません',
+
+        };
+      }
+    }
+    // 存在しない場合
+    else {
       // 返信するメッセージを作成
       message = {
         type: 'text',
-        text: 'データが存在しません',
-
+        text: `ポストバックデータを受け取りました！\ndata: ${postbackData}`,
       };
     }
-  }
-  // 存在しない場合
-  else {
-    // 返信するメッセージを作成
-    message = {
-      type: 'text',
-      text: `ポストバックデータを受け取りました！\ndata: ${postbackData}`,
-    };
-  }
+    }
+
   // 関数の呼び出し元（bot.jsのindex）に返信するメッセージを返す
   return message;
 };
