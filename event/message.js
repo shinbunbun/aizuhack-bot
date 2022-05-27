@@ -1,3 +1,5 @@
+const getContent = require('../get-content');
+
 // テキストメッセージの処理をする関数
 const textEvent = async (event, client) => {
   let message;
@@ -469,12 +471,13 @@ const textEvent = async (event, client) => {
 };
 
 // イメージを処理する関数
-const imageEvent = () => {
+const imageEvent = (event, client) => {
   // 返信するメッセージを作成
   const message = {
     type: 'text',
     text: '画像を受け取りました！',
   };
+  getContent.downloadContent(client, event.message.id, `./download/${event.message.id}.jpg`);
   // 関数の呼び出し元（index）に返信するメッセージを返す
   return message;
 };
@@ -566,7 +569,7 @@ exports.index = (event, client) => {
     case 'image': {
       // イメージの場合はimageEventを呼び出す
       // 実行結果をmessageに格納する
-      message = imageEvent();
+      message = imageEvent(event, client);
       break;
     }
     case 'video': {
