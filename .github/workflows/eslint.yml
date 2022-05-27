@@ -1,0 +1,31 @@
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+# ESLint is a tool for identifying and reporting on patterns
+# found in ECMAScript/JavaScript code.
+# More details at https://github.com/eslint/eslint
+# and https://eslint.org
+
+name: ESLint
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  eslint:
+    name: Run eslint scanning
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install ESLint
+        run: |
+          npm install eslint@8.10.0
+          npm install @microsoft/eslint-formatter-sarif@2.1.7
+
+      - name: Run ESLint
+        run: npx eslint "**/*.js"
+        continue-on-error: true
