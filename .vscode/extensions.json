@@ -1,6 +1,7 @@
 {
   "recommendations": [
     "dbaeumer.vscode-eslint",
-    "analytic-signal.preview-mp4"
+    "analytic-signal.preview-mp4",
+    "sukumo28.wav-preview"
   ]
 }
