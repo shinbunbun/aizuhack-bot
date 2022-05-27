@@ -477,7 +477,9 @@ const imageEvent = (event, client) => {
     type: 'text',
     text: '画像を受け取りました！',
   };
-  getContent.downloadContent(client, event.message.id, `./download/${event.message.id}.jpg`);
+  // ファイルを保存する
+  getContent.downloadContent(client, event.message.id, `./download/${event.message.id}.jpg`)
+    .catch((error) => console.log(error));
   // 関数の呼び出し元（index）に返信するメッセージを返す
   return message;
 };
