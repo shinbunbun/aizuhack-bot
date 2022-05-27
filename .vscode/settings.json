@@ -1,4 +1,5 @@
 {
   "editor.formatOnSave": true,
   "eslint.enable": true,
+  "nixEnvSelector.nixFile": "${workspaceRoot}/shell.nix",
 }

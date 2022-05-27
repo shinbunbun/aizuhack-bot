@@ -1,3 +1,5 @@
+const getContent = require('../get-content');
+
 // テキストメッセージの処理をする関数
 const textEvent = async (event, client) => {
   let message;
@@ -469,45 +471,57 @@ const textEvent = async (event, client) => {
 };
 
 // イメージを処理する関数
-const imageEvent = () => {
+const imageEvent = (event, client) => {
   // 返信するメッセージを作成
   const message = {
     type: 'text',
     text: '画像を受け取りました！',
   };
+  // ファイルを保存する
+  getContent.downloadContent(client, event.message.id, `./download/${event.message.id}.jpg`)
+    .catch((error) => console.log(error));
   // 関数の呼び出し元（index）に返信するメッセージを返す
   return message;
 };
 
 // ビデオを処理する関数
-const videoEvent = () => {
+const videoEvent = (event, client) => {
   // 返信するメッセージを作成
   const message = {
     type: 'text',
     text: 'ビデオを受け取りました！',
   };
+  // ファイルを保存する
+  getContent.downloadContent(client, event.message.id, `./download/${event.message.id}.mp4`)
+    .catch((error) => console.log(error));
   // 関数の呼び出し元（index）に返信するメッセージを返す
   return message;
 };
 
 // オーディオを処理する関数
-const audioEvent = () => {
+const audioEvent = (event, client) => {
   // 返信するメッセージを作成
   const message = {
     type: 'text',
     text: 'オーディオを受け取りました！',
   };
+  // ファイルを保存する
+  getContent.downloadContent(client, event.message.id, `./download/${event.message.id}.mp3`)
+    .catch((error) => console.log(error));
   // 関数の呼び出し元（index）に返信するメッセージを返す
   return message;
 };
 
 // ファイルを処理する関数
-const fileEvent = () => {
+const fileEvent = (event, client) => {
   // 返信するメッセージを作成
   const message = {
     type: 'text',
     text: 'ファイルを受け取りました！',
   };
+  // ファイルを保存する
+  getContent.downloadContent(client, event.message.id, `./download/${event.message.id}_${event.message.fileName}`)
+    .catch((error) => console.log(error));
   // 関数の呼び出し元（index）に返信するメッセージを返す
   return message;
 };
@@ -566,25 +580,25 @@ exports.index = (event, client) => {
     case 'image': {
       // イメージの場合はimageEventを呼び出す
       // 実行結果をmessageに格納する
-      message = imageEvent();
+      message = imageEvent(event, client);
       break;
     }
     case 'video': {
       // ビデオの場合はvideoEventを呼び出す
       // 実行結果をmessageに格納する
-      message = videoEvent();
+      message = videoEvent(event, client);
       break;
     }
     case 'audio': {
       // オーディオの場合はaudioEventを呼び出す
       // 実行結果をmessageに格納する
-      message = audioEvent();
+      message = audioEvent(event, client);
       break;
     }
     case 'file': {
       // ファイルの場合はfileEventを呼び出す
       // 実行結果をmessageに格納する
-      message = fileEvent();
+      message = fileEvent(event, client);
       break;
     }
     case 'location': {
