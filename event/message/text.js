@@ -124,8 +124,8 @@ export const textEvent = async (event, client) => {
             'https://github.com/shinbunbun/aizuhack-bot/blob/master/media/imagemap.png?raw=true',
           altText: 'This is an imagemap',
           baseSize: {
-            width: 1040,
-            height: 597,
+            width: 1686,
+            height: 948,
           },
           actions: [
             {
