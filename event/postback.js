@@ -1,5 +1,5 @@
 // ポストバックイベントが飛んできた時
-exports.index = (event) => {
+export default (event) => {
   let message;
   // ポストバックデータをpostbackDataに格納
   const postbackData = event.postback.data;
@@ -10,7 +10,7 @@ exports.index = (event) => {
       type: 'text',
       text: `日時データを受け取りました！\ndata: ${postbackData}\ndatetime: ${event.postback.params.datetime}`,
     };
-  // 存在しない場合
+    // 存在しない場合
   } else {
     // 返信するメッセージを作成
     message = {

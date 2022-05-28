@@ -1,5 +1,5 @@
 // 参加イベントが飛んできた時
-exports.index = async () => {
+export default () => {
   // 返信するメッセージを作成
   const message = {
     type: 'text',

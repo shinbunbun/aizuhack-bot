@@ -1,5 +1,5 @@
 // フォローイベントがとんできた時
-exports.index = () => {
+export default () => {
   // 返信するメッセージを作成
   const message = {
     type: 'text',

@@ -1,5 +1,5 @@
 // 退出イベントが飛んできた時
-exports.index = () => {
+export default () => {
   // ログに出力
   console.log('botがグループから退出しました');
 };
