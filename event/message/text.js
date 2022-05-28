@@ -121,7 +121,7 @@ export const textEvent = async (event, client) => {
         {
           type: 'imagemap',
           baseUrl:
-            'https://youkan-storage.s3.ap-northeast-1.amazonaws.com/ubic_bunbun',
+            'https://github.com/shinbunbun/aizuhack-bot/blob/master/media/imagemap.png?raw=true',
           altText: 'This is an imagemap',
           baseSize: {
             width: 1040,
@@ -131,38 +131,38 @@ export const textEvent = async (event, client) => {
             {
               type: 'uri',
               area: {
-                x: 26,
-                y: 113,
-                width: 525,
-                height: 170,
-              },
-              linkUri: 'https://www.u-aizu.ac.jp/intro/faculty/ubic/',
-            },
-            {
-              type: 'uri',
-              area: {
-                x: 33,
-                y: 331,
-                width: 780,
-                height: 177,
+                x: 590,
+                y: 179,
+                width: 511,
+                height: 585,
               },
               linkUri: 'https://shinbunbun.info/about/',
             },
             {
-              type: 'uri',
+              type: 'message',
               area: {
-                x: 939,
-                y: 484,
-                width: 94,
-                height: 105,
+                x: 0,
+                y: 0,
+                width: 458,
+                height: 948,
               },
-              linkUri: 'https://www.u-aizu.ac.jp/',
+              text: 'しんぶんぶん！！！',
+            },
+            {
+              type: 'message',
+              area: {
+                x: 1230,
+                y: 0,
+                width: 456,
+                height: 948,
+              },
+              text: 'しんぶんぶん！！！',
             },
           ],
         },
         {
           type: 'text',
-          text: '「UBIC」や「しんぶんぶん」のところをTAPしてみよう！',
+          text: '画像の色々なところをタップしてみよう！',
         },
       ];
       break;
