@@ -1,6 +1,8 @@
-const fs = require('fs');
+// fsライブラリを読み込み
+import fs from 'fs';
 
-exports.downloadContent = (client, messageId, downloadPath) => client.getMessageContent(messageId)
+// ファイルを取得してdownloadディレクトリに出力
+export const downloadContent = (client, messageId, downloadPath) => client.getMessageContent(messageId)
   .then((stream) => new Promise((resolve, reject) => {
     const writable = fs.createWriteStream(downloadPath);
     stream.pipe(writable);
