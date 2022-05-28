@@ -1,3 +1,4 @@
+// get-content.jsファイルを読み込み
 const getContent = require('../get-content');
 
 // テキストメッセージの処理をする関数
